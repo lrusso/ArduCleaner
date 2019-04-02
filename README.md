@@ -7,3 +7,9 @@
 - L298 2Amp Motor Driver Shield
 - Two wheels and two DC motors
 - 3D Printer (for the case)
+
+## How does it work?
+
+## Photos
+
+## Videos
