@@ -2,6 +2,11 @@
 int     MOTOR_LEFT_SPEED  = 255;
 int     MOTOR_RIGHT_SPEED = 240;
 
+// DC MOTORS PINS
+int     MOTOR_1_PIN = 3;
+int     MOTOR_1_DIRECTION = 12;
+int     MOTOR_2_PIN = 11;
+
 // ULTRASONIC SENSOR PINS
 int     SENSOR_PIN_TRIG = 22;
 int     SENSOR_PIN_ECHO = 24;
@@ -12,10 +17,6 @@ int     sensorMinimumRange = 0;
 int     sensorCounter = 0;
 long    sensorDuration = 0;
 long    sensorDistance = 0;
-
-int MOTOR_1_PIN = 3;
-int MOTOR_1_DIRECTION = 12;
-int MOTOR_2_PIN = 11;
 
 void setup()
     {
@@ -77,19 +78,20 @@ boolean obstacleDetected()
 
 void turnRight()
     {
-    // THE LEFT MOTOR GOES BACKWARD
+    // THE RIGHT MOTOR GOES BACKWARD
     digitalWrite(MOTOR_1_DIRECTION, HIGH);
  
     // WAITS FOR THE ROBOT TO TURN RIGHT. REGULATE THIS VALUE.
     delay(3000);
 
-    // THE LEFT MOTOR GOES FORWARD
+    // THE RIGHT MOTOR GOES FORWARD
     digitalWrite(MOTOR_1_DIRECTION, LOW);
     }
 
 void moveForward()
     {
-    digitalWrite(12, LOW);
+    // THE RIGHT MOTOR GOES FORWARD
+    digitalWrite(MOTOR_1_DIRECTION, LOW);
     analogWrite(MOTOR_1_PIN, MOTOR_LEFT_SPEED);
     analogWrite(MOTOR_2_PIN, MOTOR_RIGHT_SPEED);
     }
