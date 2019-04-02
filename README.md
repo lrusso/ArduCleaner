@@ -1,4 +1,4 @@
-# ArduCleaner - Arduino Sweeper robots
+# ArduCleaner - Arduino Sweeper robot
 
 ## Required components
 
