@@ -10,7 +10,7 @@
 
 ## How does it work?
 
-The robot uses the ultrasonic sensor for checking if there is an object in front of it in order to turn and keep cleaning. It requires any kind of plush cloth that can be hanged from the two cloth hangers that the robot has at the front. The robot can work with any kind of battery, most of them will fit inside the case.
+The robot uses the ultrasonic sensor for checking if there is an object in front of it in order to turn and keep cleaning. It requires any kind of plush cloth that can be hanged from the two cloth hangers that the robot has at the front (look photos below). The robot can work with any kind of battery, most of them will fit inside the case.
 
 ## Photos
 
