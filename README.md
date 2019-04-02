@@ -18,4 +18,6 @@ The robot uses the ultrasonic sensor for checking if there is an object in front
 ![alt photo2](https://raw.githubusercontent.com/lrusso/ArduCleaner/master/ArduCleaner2.jpg)
 ![alt photo3](https://raw.githubusercontent.com/lrusso/ArduCleaner/master/ArduCleaner3.jpg)
 
-## Video
+## Demo
+
+![alt demo](https://raw.githubusercontent.com/lrusso/ArduCleaner/master/ArduCleaner.gif)
