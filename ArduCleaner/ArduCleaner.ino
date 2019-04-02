@@ -21,10 +21,10 @@ long    sensorDistance = 0;
 void setup()
     {
     Serial.begin(9600);
-    
+
     pinMode(SENSOR_PIN_ECHO, INPUT);
     pinMode(SENSOR_PIN_TRIG, OUTPUT);
-  
+
     pinMode(MOTOR_1_DIRECTION, OUTPUT);
 
     moveForward();
@@ -80,7 +80,7 @@ void turnRight()
     {
     // THE RIGHT MOTOR GOES BACKWARD
     digitalWrite(MOTOR_1_DIRECTION, HIGH);
- 
+
     // WAITS FOR THE ROBOT TO TURN RIGHT. REGULATE THIS VALUE.
     delay(3000);
 
@@ -92,6 +92,7 @@ void moveForward()
     {
     // THE RIGHT MOTOR GOES FORWARD
     digitalWrite(MOTOR_1_DIRECTION, LOW);
+
     analogWrite(MOTOR_1_PIN, MOTOR_LEFT_SPEED);
     analogWrite(MOTOR_2_PIN, MOTOR_RIGHT_SPEED);
     }
