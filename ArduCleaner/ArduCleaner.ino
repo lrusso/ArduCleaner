@@ -1,4 +1,4 @@
-// DC MOTORS PINS AND SPEEDS. REGULATE THE SPEED OF EACH DC MOTOR.
+// DC MOTORS PINS AND SPEEDS. REGULATE THE SPEED OF EACH DC MOTOR AND THE TURNING RIGHT DELAY.
 int     MOTOR_LEFT_PIN           = 11;
 int     MOTOR_LEFT_SPEED         = 190;
 int     MOTOR_RIGHT_PIN          = 3;
@@ -22,10 +22,10 @@ void setup()
 
     pinMode(SENSOR_PIN_ECHO, INPUT);
     pinMode(SENSOR_PIN_TRIGGER, OUTPUT);
+    pinMode(MOTOR_LEFT_PIN, OUTPUT);
+    pinMode(MOTOR_RIGHT_PIN, OUTPUT);
 
-    pinMode(MOTOR_LEFT_PIN,OUTPUT);
-    pinMode(MOTOR_RIGHT_PIN,OUTPUT);
-
+    // STARTING EACH DC MOTOR
     analogWrite(MOTOR_LEFT_PIN, 255);
     analogWrite(MOTOR_RIGHT_PIN, 255);
     delay(50);
@@ -81,10 +81,17 @@ boolean obstacleDetected()
 
 void turnRight()
     {
+    // SETS NO SPEED TO THE RIGHT DC MOTOR
     analogWrite(MOTOR_RIGHT_PIN, 0);
+
+    // WAITS UNTIL THE ROBOT TURNS RIGHT
     delay(MOTOR_RIGHT_TURNINGDELAY);
+
+    // STARTS THE RIGHT DC MOTOR
     analogWrite(MOTOR_RIGHT_PIN, 255);
     delay(50);
+    
+    // SETS THE DEFAULT RIGHT DC MOTOR SPEED
     analogWrite(MOTOR_RIGHT_PIN, MOTOR_RIGHT_SPEED);
     }
 
