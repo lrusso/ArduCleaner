@@ -1,15 +1,13 @@
-// DC MOTORS SPEEDS. REGULATE THE SPEED OF EACH DC MOTOR.
-int     MOTOR_LEFT_SPEED  = 255;
-int     MOTOR_RIGHT_SPEED = 240;
-
-// DC MOTORS PINS
-int     MOTOR_1_PIN = 3;
-int     MOTOR_1_DIRECTION = 12;
-int     MOTOR_2_PIN = 11;
+// DC MOTORS PINS AND SPEEDS. REGULATE THE SPEED OF EACH DC MOTOR.
+int     MOTOR_LEFT_PIN           = 11;
+int     MOTOR_LEFT_SPEED         = 190;
+int     MOTOR_RIGHT_PIN          = 3;
+int     MOTOR_RIGHT_SPEED        = 175;
+int     MOTOR_RIGHT_TURNINGDELAY = 2000;
 
 // ULTRASONIC SENSOR PINS
-int     SENSOR_PIN_TRIG = 22;
-int     SENSOR_PIN_ECHO = 24;
+int     SENSOR_PIN_TRIGGER = 22;
+int     SENSOR_PIN_ECHO    = 24;
 
 // ULTRASONIC SENSOR VARIABLES. DO NOT MODIFIY.
 int     sensorMaximumRange = 15;
@@ -23,9 +21,14 @@ void setup()
     Serial.begin(9600);
 
     pinMode(SENSOR_PIN_ECHO, INPUT);
-    pinMode(SENSOR_PIN_TRIG, OUTPUT);
+    pinMode(SENSOR_PIN_TRIGGER, OUTPUT);
 
-    pinMode(MOTOR_1_DIRECTION, OUTPUT);
+    pinMode(MOTOR_LEFT_PIN,OUTPUT);
+    pinMode(MOTOR_RIGHT_PIN,OUTPUT);
+
+    analogWrite(MOTOR_LEFT_PIN, 255);
+    analogWrite(MOTOR_RIGHT_PIN, 255);
+    delay(50);
 
     moveForward();
     }
@@ -45,11 +48,11 @@ void loop()
 
 boolean obstacleDetected()
     {
-    digitalWrite(SENSOR_PIN_TRIG, LOW);
+    digitalWrite(SENSOR_PIN_TRIGGER, LOW);
     delayMicroseconds(2);
-    digitalWrite(SENSOR_PIN_TRIG, HIGH);
+    digitalWrite(SENSOR_PIN_TRIGGER, HIGH);
     delayMicroseconds(10);
-    digitalWrite(SENSOR_PIN_TRIG, LOW);
+    digitalWrite(SENSOR_PIN_TRIGGER, LOW);
 
     sensorDuration = pulseIn(SENSOR_PIN_ECHO, HIGH);
     sensorDistance = sensorDuration/58.2;
@@ -78,21 +81,15 @@ boolean obstacleDetected()
 
 void turnRight()
     {
-    // THE RIGHT MOTOR GOES BACKWARD
-    digitalWrite(MOTOR_1_DIRECTION, HIGH);
-
-    // WAITS FOR THE ROBOT TO TURN RIGHT. REGULATE THIS VALUE.
-    delay(3000);
-
-    // THE RIGHT MOTOR GOES FORWARD
-    digitalWrite(MOTOR_1_DIRECTION, LOW);
+    analogWrite(MOTOR_RIGHT_PIN, 0);
+    delay(MOTOR_RIGHT_TURNINGDELAY);
+    analogWrite(MOTOR_RIGHT_PIN, 255);
+    delay(50);
+    analogWrite(MOTOR_RIGHT_PIN, MOTOR_RIGHT_SPEED);
     }
 
 void moveForward()
     {
-    // THE RIGHT MOTOR GOES FORWARD
-    digitalWrite(MOTOR_1_DIRECTION, LOW);
-
-    analogWrite(MOTOR_1_PIN, MOTOR_LEFT_SPEED);
-    analogWrite(MOTOR_2_PIN, MOTOR_RIGHT_SPEED);
+    analogWrite(MOTOR_LEFT_PIN, MOTOR_LEFT_SPEED);
+    analogWrite(MOTOR_RIGHT_PIN, MOTOR_RIGHT_SPEED);
     }
